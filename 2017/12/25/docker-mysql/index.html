@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="docker  安装 mysql 教程">
+<meta name="description" content="mysql installation on docker container">
 <meta name="keywords" content="docker,mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker 安装 mysql">
+<meta property="og:title" content="mysql installation on docker container">
 <meta property="og:url" content="http://gosick.xyz/2017/12/25/docker-mysql/index.html">
 <meta property="og:site_name" content="Gosick">
-<meta property="og:description" content="docker  安装 mysql 教程">
+<meta property="og:description" content="mysql installation on docker container">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-25T08:19:09.594Z">
+<meta property="og:updated_time" content="2018-01-09T03:04:26.076Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker 安装 mysql">
-<meta name="twitter:description" content="docker  安装 mysql 教程">
+<meta name="twitter:title" content="mysql installation on docker container">
+<meta name="twitter:description" content="mysql installation on docker container">
 
 
 
@@ -132,7 +132,7 @@
 
 
 
-  <title> docker 安装 mysql | Gosick </title>
+  <title> mysql installation on docker container | Gosick </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +282,7 @@
             
             
               
-                docker 安装 mysql
+                mysql installation on docker container
               
             
           </h1>
@@ -355,18 +355,18 @@
       
 
       
-        <p>docker  安装 mysql 教程</p>
+        <p>mysql installation on docker container</p>
 <a id="more"></a>
 <ol>
 <li><p>拉取mysql image</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull mysql:latest</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:latest</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>运行mysql</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">docker run --name mysql \</div><div class="line">-p 3306:3306 \</div><div class="line">-v /Users/ks/docker/mysql/data:/var/lib/mysql \</div><div class="line">-v /Users/ks/docker/mysql/conf:/etc/mysql/conf.d \</div><div class="line"><span class="_">-e</span> MYSQL_ROOT_PASSWORD=lovelive \</div><div class="line"><span class="_">-d</span> mysql:latest</div></pre></td></tr></table></figure>
-<p><code>--name</code> 指定docker容器名称<br><code>-p</code> 将容器的3306端口映射到主机的3306，格式 <code>主机端口</code>:<code>容器端口</code><br><code>-v</code> /Users/ks/docker/mysql/data:/var/lib/mysql，映射mysql data目录<br><code>-v</code> /Users/ks/docker/mysql/conf:/etc/mysql/conf.d，映射mysql config目录<br><code>-e</code> 指定初始化root密码<br><code>-d</code> 指定mysql版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql \</span><br><span class="line">  -p 3306:3306 \</span><br><span class="line">  -v <span class="variable">$HOME</span>/docker/mysql/data:/var/lib/mysql \</span><br><span class="line">  -v <span class="variable">$HOME</span>/docker/mysql/conf:/etc/mysql/conf.d \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=lovelive \</span><br><span class="line">  -d mysql:latest</span><br></pre></td></tr></table></figure>
+<p><code>--name</code> 指定docker容器名称<br><code>-p</code> 将容器的3306端口映射到主机的3306，格式 <code>主机端口</code>:<code>容器端口</code><br><code>-v</code> $HOME/docker/mysql/data:/var/lib/mysql，映射mysql data目录<br><code>-v</code> $HOME/docker/mysql/conf:/etc/mysql/conf.d，映射mysql config目录<br><code>-e</code> 指定初始化root密码<br><code>-d</code> 后台启动</p>
 </li>
 <li><p>启动/停止mysql</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 停止 mysql</span></div><div class="line">docker stop mysql</div><div class="line"></div><div class="line"><span class="comment"># 启动 mysql</span></div><div class="line">docker start mysql</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 停止 mysql</span></span><br><span class="line">docker stop mysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动 mysql</span></span><br><span class="line">docker start mysql</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -422,6 +422,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/25/docker-caddy/" rel="prev" title="caddy installation on docker container">
+                caddy installation on docker container <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -484,7 +488,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -506,7 +510,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -559,7 +563,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
