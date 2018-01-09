@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="Gosick">
 <meta property="og:description" content="nginx installation on docker container">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-09T03:22:46.905Z">
+<meta property="og:updated_time" content="2018-01-09T03:28:04.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker-nginx">
 <meta name="twitter:description" content="nginx installation on docker container">
@@ -361,7 +361,7 @@
 <li><p>拉取nginx image</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx:latest</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>运行mysql</p>
+<li><p>运行nginx</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nginx \</span><br><span class="line">  -p 80:80 \</span><br><span class="line">  -v <span class="variable">$HOME</span>/docker/nginx/conf.d:/etc/nginx/conf.d \</span><br><span class="line">  -v <span class="variable">$HOME</span>/docker/nginx/html:/usr/share/nginx/html \</span><br><span class="line">  -v <span class="variable">$HOME</span>/docker/nginx/<span class="built_in">log</span>:/var/<span class="built_in">log</span>/nginx \</span><br><span class="line">  -d nginx:latest</span><br></pre></td></tr></table></figure>
 <p><code>--name</code> 指定docker容器名称<br><code>-p</code> 将容器的80端口映射到宿主机的80，格式 <code>主机端口</code>:<code>容器端口</code><br><code>-v</code> $HOME/docker/nginx/conf.d:/etc/nginx/conf.d，映射nginx 配置目录<br><code>-v</code> $HOME/docker/nginx/html:/usr/share/nginx/html，映射nginx 静态文件目录<br><code>-v</code> $HOME/docker/nginx/log:/var/log/nginx 映射nginx日志目录<br><code>-d</code> 后台启动</p>
 <blockquote>
