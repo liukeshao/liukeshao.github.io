@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="brew," />
+  <meta name="keywords" content="spring kafka consumer error,spring kafka producer error," />
 
 
 
@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="brew 安装及常用命令">
-<meta name="keywords" content="brew">
+<meta name="description" content="spring  kafka 1.x consumer and producer 异常处理">
+<meta name="keywords" content="spring kafka consumer error,spring kafka producer error">
 <meta property="og:type" content="article">
-<meta property="og:title" content="brew安装及常用命令">
-<meta property="og:url" content="http://gosick.xyz/2017/04/17/brew/index.html">
+<meta property="og:title" content="spring kafka 异常处理">
+<meta property="og:url" content="http://gosick.xyz/2018/03/22/spring-kafka-excetion/index.html">
 <meta property="og:site_name" content="Gosick">
-<meta property="og:description" content="brew 安装及常用命令">
+<meta property="og:description" content="spring  kafka 1.x consumer and producer 异常处理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-25T08:14:48.574Z">
+<meta property="og:updated_time" content="2018-03-22T08:52:21.990Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="brew安装及常用命令">
-<meta name="twitter:description" content="brew 安装及常用命令">
+<meta name="twitter:title" content="spring kafka 异常处理">
+<meta name="twitter:description" content="spring  kafka 1.x consumer and producer 异常处理">
 
 
 
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://gosick.xyz/2017/04/17/brew/"/>
+  <link rel="canonical" href="http://gosick.xyz/2018/03/22/spring-kafka-excetion/"/>
 
 
 
 
 
-  <title> brew安装及常用命令 | Gosick </title>
+  <title> spring kafka 异常处理 | Gosick </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +261,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://gosick.xyz/2017/04/17/brew/">
+    <link itemprop="mainEntityOfPage" href="http://gosick.xyz/2018/03/22/spring-kafka-excetion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kotori">
@@ -282,7 +282,7 @@
             
             
               
-                brew安装及常用命令
+                spring kafka 异常处理
               
             
           </h1>
@@ -297,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T23:46:11+08:00">
-                2017-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-22T16:24:25+08:00">
+                2018-03-22
               </time>
             
 
@@ -320,8 +320,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mac/" itemprop="url" rel="index">
-                    <span itemprop="name">mac</span>
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
                   </a>
                 </span>
 
@@ -355,10 +355,25 @@
       
 
       
-        <p>brew 安装及常用命令</p>
+        <p>spring  kafka 1.x consumer and producer 异常处理</p>
 <a id="more"></a>
-<p>1.安装（需要ruby）<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure></p>
-<p>2.搜索：<code>brew search xxx</code>，所有的后台服务brew基本都有，例如：nginx、tomcat、mysql等<br>3.查询：<code>brew info xxx</code>，查看服务的基本信息，是否安装、启动命令、配置信息等<br>4.更新：<code>brew upadate</code>，更新Homebrew自己，使得5、6操作有意义<br>5.检查过时：<code>brew outdated</code>，返回所安装的软件有哪些可以升级，例如：mysql (5.7.17) &lt; 5.7.18<br>6.升级：<code>brew upgrade</code>，真正的升级所安装软件，现在首先会执行brew update，所以没必要手动更新brew自己，brew upgrade xxx，可以单独更新某个软件<br>7.清理：<code>brew cleanup</code> ，清理以前安装过的版本，但是会缓存最后一个安装的版本<br>8.列表：<code>brew list</code>，罗列出已经安装过的软件 </p>
+<p>spring kafka version 1.3.3</p>
+<h2 id="consumer-异常处理："><a href="#consumer-异常处理：" class="headerlink" title="consumer 异常处理："></a>consumer 异常处理：</h2><p>consumer 使用 @KafkaListener 注解</p>
+<p><code>@KafkaListener(topics={&quot;kafka&quot;}, errorHandler=&quot;myKafkaListenerErrorHandler&quot;)</code></p>
+<p>指定 <code>errorHandler</code> 属性，值需要是spring bean</p>
+<p>实现 <code>KafkaListenerErrorHandler</code> 接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyKafkaListenerErrorHandler</span> <span class="keyword">implements</span> <span class="title">KafkaListenerErrorHandler</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">handleError</span><span class="params">(Message&lt;?&gt; message, ListenerExecutionFailedException exception)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">// 这里做失败处理</span></span><br><span class="line">        <span class="comment">// 接口返回值会被忽略，所以不需要处理</span></span><br><span class="line">        <span class="comment">// @return the return value is ignored.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="producer-异常处理："><a href="#producer-异常处理：" class="headerlink" title="producer 异常处理："></a>producer 异常处理：</h2><p>实现 <code>ProducerListener</code> 接口的 <code>onError</code> 接口</p>
+<blockquote>
+<p>ProducerListenerAdapter 是 ProducerListener 的空实现</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyProducerListener</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">ProducerListenerAdapter</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(String topic, Integer partition, K key, V value, Exception exception)</span> </span>&#123;</span><br><span class="line">  		<span class="comment">// 这里做失败处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在需要的的覅方，替换 <code>kafkaTemplate</code> 默认的 <code>ProducerListener</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafkaTemplate.setProducerListener(<span class="keyword">new</span> MyProducerListener&lt;&gt;());</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我使用的是 spring boot，利用spring boot 的 CommandLineRunner 接口，在启动完成后，将kafkaTemplate 默认的 ProducerListener 替换成自己的实现</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InitKafkaTemplate</span> <span class="keyword">implements</span> <span class="title">CommandLineRunner</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> KafkaTemplate&lt;String, String&gt; kafkaTemplate;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(String... strings)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        kafkaTemplate.setProducerListener(<span class="keyword">new</span> MyProducerListener&lt;&gt;());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -388,7 +403,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/brew/" rel="tag"># brew</a>
+            <a href="/tags/spring-kafka-consumer-error/" rel="tag"># spring kafka consumer error</a>
+          
+            <a href="/tags/spring-kafka-producer-error/" rel="tag"># spring kafka producer error</a>
           
         </div>
       
@@ -401,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/17/hexo博客搭建教程/" rel="next" title="Hexo系列教程 mac版">
-                <i class="fa fa-chevron-left"></i> Hexo系列教程 mac版
+              <a href="/2018/01/09/docker-nginx/" rel="next" title="docker-nginx">
+                <i class="fa fa-chevron-left"></i> docker-nginx
               </a>
             
           </div>
@@ -410,10 +427,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/25/docker-mysql/" rel="prev" title="mysql installation on docker container">
-                mysql installation on docker container <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -460,8 +473,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/victorique.jpg"
@@ -534,6 +556,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#consumer-异常处理："><span class="nav-number">1.</span> <span class="nav-text">consumer 异常处理：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#producer-异常处理："><span class="nav-number">2.</span> <span class="nav-text">producer 异常处理：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
